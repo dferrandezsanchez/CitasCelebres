@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import dev.danielferrandez.citascelebres.databinding.FragmentMainBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-    private val viewModel = MainViewModel()
+    private val viewModel : MainViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
