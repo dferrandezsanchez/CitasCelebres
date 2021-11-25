@@ -3,7 +3,43 @@ plugins {
     id 'kotlin'
 }
 
+dependencies {
+    testImplementation "io.mockk:mockk:1.11.0"
+    testImplementation "org.junit.jupiter:junit-jupiter:5.8.1"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.1"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:5.8.1"
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+// KNOWLEDGE: Parameterized tests
+tasks.withType(Test) {
+    useJUnitPlatform()
+    testLogging {
+        exceptionFormat "full"
+        events "started", "skipped", "passed", "failed"
+        showStandardStreams true
+    }
+}
+
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+task testJar(type: Jar) {
+    from sourceSets.test.output
+    archiveClassifier = "test"
+}
+
+configurations {
+    tests
+}
+
+artifacts {
+    tests testJar
 }

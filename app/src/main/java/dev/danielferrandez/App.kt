@@ -3,6 +3,7 @@ package dev.danielferrandez
 import android.app.Application
 import dev.danielferrandez.citascelebres.di.appModule
 import dev.danielferrandez.citascelebres.di.dataSourceModule
+import dev.danielferrandez.citascelebres.di.providerModule
 import dev.danielferrandez.citascelebres.di.repositoryModule
 import dev.danielferrandez.citascelebres.di.useCaseModule
 import org.koin.android.ext.koin.androidContext
@@ -23,7 +24,8 @@ class App : Application() {
                 appModule,
                 useCaseModule,
                 repositoryModule,
-                dataSourceModule
+                dataSourceModule,
+                providerModule
             )
         )
     }

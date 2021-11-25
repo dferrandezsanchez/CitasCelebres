@@ -4,5 +4,5 @@ import dev.danielferrandez.data.features.quotes.dataSources.QuotesDataSource
 import org.koin.dsl.module
 
 val dataSourceModule = module {
-    single { QuotesDataSource() }
+    single { QuotesDataSource(get()) }
 }

@@ -5,6 +5,6 @@ import dev.danielferrandez.domain.features.quotes.models.Quote
 data class QuoteEntity(
     val quote: String,
     val author: String
-)
-
-fun QuoteEntity.transform(): Quote = Quote(quote, author)
+) {
+    fun transform(): Quote = Quote(quote, author)
+}
